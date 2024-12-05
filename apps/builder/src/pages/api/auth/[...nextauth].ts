@@ -88,6 +88,7 @@ if (env.GOOGLE_AUTH_CLIENT_ID && env.GOOGLE_AUTH_CLIENT_SECRET)
     GoogleProvider({
       clientId: env.GOOGLE_AUTH_CLIENT_ID,
       clientSecret: env.GOOGLE_AUTH_CLIENT_SECRET,
+      allowDangerousEmailAccountLinking: true,
     }),
   );
 
@@ -138,6 +139,7 @@ if (
       clientId: env.KEYCLOAK_CLIENT_ID,
       clientSecret: env.KEYCLOAK_CLIENT_SECRET,
       issuer: `${env.KEYCLOAK_BASE_URL}/${env.KEYCLOAK_REALM}`,
+      allowDangerousEmailAccountLinking: true,
     }),
   );
 }
@@ -155,6 +157,7 @@ if (env.CUSTOM_OAUTH_WELL_KNOWN_URL) {
     clientId: env.CUSTOM_OAUTH_CLIENT_ID,
     clientSecret: env.CUSTOM_OAUTH_CLIENT_SECRET,
     wellKnown: env.CUSTOM_OAUTH_WELL_KNOWN_URL,
+    allowDangerousEmailAccountLinking: true,
     profile(profile) {
       return {
         id: getAtPath(profile, env.CUSTOM_OAUTH_USER_ID_PATH),
